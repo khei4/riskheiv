@@ -2,8 +2,8 @@
 
 ## image build
 
-`docker build . -t riscv/riskheiv`
+`docker build . -t riskheiv`
 
 ## enter the container
 
-`docker run -it -w /src -v $PWD:/src riscv/riskheiv`
+`docker run -it -w /src -v $PWD:/src riskheiv`
