@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "ninja",
+			"command": "ninja -Cbuild",
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}/asmkheiv"
+			},
+			"detail": "ninja",
+		}
+	]
+}
