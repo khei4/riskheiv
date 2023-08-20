@@ -1,5 +1,5 @@
 #include "Encoder.h"
 
-void Encode(std::string s) {
-  return;
-}
+void Encoder::readLabels(AsmParser &AP) { return; };
+
+bool Encoder::encode(AsmParser &AP) { return true; };

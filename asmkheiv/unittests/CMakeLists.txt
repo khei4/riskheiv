@@ -1,15 +1,35 @@
 enable_testing()
 
-add_executable(
-  tut
-  tut.cpp
-)
-target_link_libraries(
-  tut
-  GTest::gtest_main
-  encoder
-)
-target_include_directories(tut PUBLIC ${PROJECT_SOURCE_DIR}/include)
-
+set(ALL_TESTS "")
+file(GLOB TEST_SOURCES *.cpp)
 include(GoogleTest)
-gtest_discover_tests(tut)
+foreach(TEST_SRC ${TEST_SOURCES})
+    
+    get_filename_component(TEST_NAME ${TEST_SRC} NAME_WE)
+    
+    add_executable(${TEST_NAME} ${TEST_SRC})
+    target_link_libraries(${TEST_NAME} GTest::gtest_main asm)
+    target_include_directories(${TEST_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
+    
+    list(APPEND ALL_TESTS ${TEST_NAME})
+
+    gtest_discover_tests(${TEST_NAME})
+endforeach()
+# add_executable( ParserTest
+#   ParserTest.cpp
+# )
+# target_link_libraries( ParserTest
+#   GTest::gtest_main
+#   asm
+# )
+
+# target_include_directories(ParserTest
+#   PUBLIC
+#   ${PROJECT_SOURCE_DIR}/include
+# )
+
+# list(APPEND ALL_TESTS ParserTest)
+
+# gtest_discover_tests(ParserTest)
+
+set(ALL_TESTS ${ALL_TESTS} PARENT_SCOPE)

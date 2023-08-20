@@ -1,0 +1,7 @@
+{
+    "cmake.sourceDirectory": "/home/khei4/git/riskheiv/asmkheiv",
+    "files.associations": {
+        "bitset": "cpp",
+        "iostream": "cpp"
+    }
+}
