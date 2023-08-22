@@ -19,12 +19,12 @@ std::vector<std::string> AsmParser::parseLineInner(const std::string &str) {
 
 bool AsmParser::parseLine() {
   std::string line;
-  if (std::getline(Is, line)) {
+  while (std::getline(Is, line)) {
+    ++LineCounter;
+    if (line.find(':') != std::string::npos)
+      continue;
     Toks = parseLineInner(line);
-    LineCounter++;
     return true;
-  } else {
-    Toks.clear();
-    return false;
   }
+  return false;
 }
