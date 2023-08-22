@@ -41,7 +41,7 @@ set(CMAKE_COLOR_DIAGNOSTICS ON)
 
 # TODO: put some tests on build di
 add_custom_target(run
-  COMMAND ./asmkheiv ../tests/fib.s
+  COMMAND ./asmkheiv ../tests/addi.s
   DEPENDS asmkheiv
   )
 

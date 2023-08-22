@@ -15,21 +15,5 @@ foreach(TEST_SRC ${TEST_SOURCES})
 
     gtest_discover_tests(${TEST_NAME})
 endforeach()
-# add_executable( ParserTest
-#   ParserTest.cpp
-# )
-# target_link_libraries( ParserTest
-#   GTest::gtest_main
-#   asm
-# )
-
-# target_include_directories(ParserTest
-#   PUBLIC
-#   ${PROJECT_SOURCE_DIR}/include
-# )
-
-# list(APPEND ALL_TESTS ParserTest)
-
-# gtest_discover_tests(ParserTest)
 
 set(ALL_TESTS ${ALL_TESTS} PARENT_SCOPE)
