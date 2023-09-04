@@ -16,7 +16,6 @@ private:
   Address PC;
   std::map<std::string, Address> Labels;
 
-  // TODO: handle jump labels
   // define on AsmParser.cpp
   std::vector<std::string> parseLineInner(const std::string &str);
 
