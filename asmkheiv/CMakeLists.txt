@@ -7,9 +7,20 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_COLOR_DIAGNOSTICS ON)
 
 # TODO switch on off by CMAKE option
-set(CMAKE_CXX_FLAGS "-g -fsanitize=address -fsanitize=leak -fsanitize=undefined ${CMAKE_CXX_FLAGS}")
+message(STATUS "build on ${CMAKE_SYSTEM_NAME}, ${CMAKE_SYSTEM_PROCESSOR}")
 
-add_custom_target(build ALL COMMENT [[!! is this build ? !!]])
+# You can disable SANITIZE by cmake -DSANITIZE=OFF ..
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    option(SANITIZE "Enable sanitize options" ON)
+else()
+    option(SANITIZE "Enable sanitize options" OFF)
+endif()
+
+if (SANITIZE)
+  set(CMAKE_CXX_FLAGS "-g -fsanitize=address -fsanitize=leak -fsanitize=undefined ${CMAKE_CXX_FLAGS}")
+endif()
+
+add_custom_target(build ALL)
 
 
 
