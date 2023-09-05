@@ -33,9 +33,8 @@ TEST(ParserTest, Labels) {
   // Expect two strings not to be equal.
 
   auto &Labels = AP.getLabels();
-  EXPECT_TRUE(Labels.find(".L3") != Labels.end());
-  if (Labels.find(".L3") != Labels.end())
-    EXPECT_EQ(AP.getLabels().find(".L3")->second, 0x08);
+  EXPECT_NE(Labels.find(".L3"), Labels.end());
+  EXPECT_EQ(AP.getLabels().find(".L3")->second, 0x08);
   EXPECT_TRUE(AP.parseLine());
   const auto &Add = AP.getTokens();
   EXPECT_EQ(Add[0], "add") << "should add";
@@ -53,4 +52,15 @@ TEST(ParserTest, Labels) {
   EXPECT_EQ(Bne[1], "a5") << "should a5";
   EXPECT_EQ(Bne[2], "a2") << "should a2";
   EXPECT_EQ(Bne[3], ".L3") << "should .L3";
+}
+
+TEST(ParserTest, LoadStore) {
+  auto ss = std::stringstream("lh x18, 4(x0)\n");
+  AsmParser AP(ss);
+
+  EXPECT_TRUE(AP.parseLine());
+  const auto &LoadHalf = AP.getTokens();
+  EXPECT_EQ(LoadHalf[0], "lh");
+  EXPECT_EQ(LoadHalf[1], "x18");
+  EXPECT_EQ(LoadHalf[2], "4(x0)");
 }
