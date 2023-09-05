@@ -43,6 +43,7 @@ TEST(BinaryEmitterTest, ITypes) {
   std::ostringstream OSS;
   BE.emitBinary(OSS);
   std::string Bin = OSS.str();
+  // TODO: debug byte util
   int cnt = 0;
   for (char c : Bin) {
     std::cerr << std::hex << std::setw(2) << std::setfill('0')
