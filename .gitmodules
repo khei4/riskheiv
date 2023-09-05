@@ -1,0 +1,3 @@
+[submodule "asmkheiv"]
+	path = asmkheiv
+	url = https://github.com/khei4/asmkheiv.git
